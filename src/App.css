@@ -1,38 +1,169 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: hsl(216, 12%, 8%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .App {
+  perspective: 1000px;
+}
+.main {
+  background-color: hsl(213, 19%, 18%);
+  border-radius: 15px;
+  padding: 20px;
+  font-size: 15px;
+  width: 365px;
+  height: 332px;
+  font-family: "Overpass", sans-serif;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.main .logo {
+  display: inline-block;
+  position: relative;
+}
+.main .star {
+  background-color: hsl(216, 12%, 54%);
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  justify-content: center;
+  opacity: 0.3;
+}
+.main .logo img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.main h2 {
+  color: hsl(0, 0%, 100%);
+  margin: 15px 0;
+}
+.main p {
+  margin: 15px 0;
+  color: hsl(216, 12%, 54%);
+  line-height: 1.5em;
+}
+.main ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 25px 18px 0;
+}
+.main ul > li {
+  position: relative;
+  z-index: 5;
+  color: hsl(217, 12%, 63%);
+  cursor: pointer;
+}
+.main ul > li::before {
+  position: absolute;
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: hsl(216, 12%, 54%);
+  z-index: -1;
+  opacity: 0.2;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+}
+
+.main ul > li:hover::before,
+.main ul > li:hover {
+  background-color: hsl(217, 12%, 63%);
+  color: white;
+  opacity: 1;
+}
+
+.main ul > li.active::before,
+.main ul > li.active {
+  color: white;
+  opacity: 1;
+  background-color: hsl(25, 97%, 53%);
+}
+.main button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: hsl(25, 97%, 53%);
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.main button:hover {
+  background-color: white;
+  color: hsl(25, 97%, 53%);
+  font-weight: bold;
+}
+.back,
+.front {
+  position: absolute;
+  width: 90%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.back {
+  color: white;
+  transform: rotateY(180deg);
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.back img {
+  margin-top: 5px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* .App:hover .main {
+  transform: rotateY(180deg);
+} */
+.rate {
+  background-color: hsl(216deg 12% 54% / 22%);
+  color: hsl(25, 97%, 53%) !important;
+  width: fit-content;
+  margin: 10px auto 20px !important;
+  padding: 5px 20px;
+  border-radius: 25px;
+}
+.rate span {
+}
+@media screen and (max-width: 480px) {
+  .main {
+    height: 300px;
+    width: 300px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .main h2 {
+    margin: 10px 0 0 0 !important;
   }
-  to {
-    transform: rotate(360deg);
+  .main p {
+    margin: 0px auto !important;
+  }
+  .front {
+    width: 85%;
+  }
+  .main ul {
+    margin: 11px 18px 0;
+  }
+  .main button {
+    margin-top: 25px;
+    cursor: none;
+  }
+  .main ul > li::before,
+  .main ul > li,
+  .back h2,
+  .back p {
+    cursor: default;
   }
 }
